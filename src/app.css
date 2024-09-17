@@ -1,32 +1,138 @@
-.dropdown {
-  border: 1px solid #ccc;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+:root {
+  --primary-color: #b346e5e3; /* Indigo */
+  --bg-color: #f9fafb; /* Light gray */
+  --input-bg-color: #fff; /* White */
+  --border-color: #e5e7eb; /* Light border */
+  --text-color: #111827; /* Dark text */
+  --text-muted: #6b7280; /* Muted text */
 }
-.dropdown-option {
-  padding: 8px 16px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.editor-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  resize: both;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.editor-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.input-item {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: var(--input-bg-color);
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  transition: transform 0.2s, background-color 0.2s;
 }
-.dropdown-option:hover {
-  background-color: #f0f0f0;
+
+.input-item:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
 }
-.icon {
-  margin-right: 8px;
-  font-size: 16px;
+
+textarea {
+  width: 100%;
+  height: auto;
+  resize: none;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
 }
-.name {
-  flex: 1;
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
-.tooltip {
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg-color);
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* Dragger Style */
+.dragger {
+  background-color: var(--primary-color);
+  height: 20px;
+  width: 100%;
+  cursor: grab;
+  border-radius: 8px 8px 0 0;
+}
+
+.dragger:active {
+  cursor: grabbing;
+}
+
+/* Resizer Style */
+.resizer {
+  background-color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  cursor: se-resize;
   position: absolute;
-  background: #000;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  transform: translateY(-100%);
-  white-space: nowrap;
+  bottom: 0;
+  right: 0;
+  border-radius: 0 0 8px 0;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.add-button:hover {
+  background-color: #b363f1; /* Lighter indigo for hover effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.add-button:active {
+  background-color: #943ad5; /* Slightly darker indigo for active state */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
